@@ -1,0 +1,203 @@
+        /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #45a049;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.main-content {
+    padding: 50px 0;
+}
+
+footer {
+    background-color: #45a049;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Общие стили для форм */
+input[type="file"], textarea, button {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Стили для элемента загрузки файла */
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Стили для блоков "О нас" и "Контакты" */
+.about-section {
+    text-align: center;
+    padding: 50px;
+}
+
+.contact-section {
+    text-align: center;
+    padding: 50px;
+}
+
+.upload-container {
+    margin-bottom: 20px;
+}
+
+.upload-label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.upload-container {
+    margin-bottom: 20px;
+}
+
+.custom-file-input {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-file-input:hover {
+    background-color: #45a049;
+}
+
+/* Скрытие стандартного элемента загрузки файла */
+.upload-container input[type="file"] {
+    display: none;
+}
+
+.custom-textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical; /* Разрешить вертикальное изменение размеров */
+    min-height: 100px; /* Минимальная высота */
+    max-height: 300px; /* Максимальная высота */
+}
+
+.custom-textarea:focus {
+    outline: none; /* Убрать рамку при фокусе */
+    border-color: #4CAF50; /* Изменить цвет рамки при фокусе */
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button[type="submit"]:active {
+    background-color: #3e8e41;
+}
