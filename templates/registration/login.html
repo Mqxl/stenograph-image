@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="login-form-container">
+    <h2 style="font-size: 34px; color: #27130f">Вход</h2>
+    <br>
+    <form method="post" class="login-form">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="button">Войти</button>
+    </form>
+    <div class="register-link">
+      Нету аккаунта? <a href="{% url 'signup' %}">Зарегистрируйся</a>
+    </div>
+</div>
+{% endblock %}

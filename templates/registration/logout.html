@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="logout-message">
+    <h2>Вы успешно вышли из аккаунта!</h2>
+    <p>Спасибо за использование нашего сервиса.</p>
+    <p>Через несколько секунд вы будете перенаправлены на главную страницу.</p>
+</div>
+    <script>
+    // Redirect to the home page after 3 seconds
+    setTimeout(function() {
+        window.location.href = "{% url 'encrypt_text' %}";
+    }, 2000);
+</script>
+
+{% endblock %}
+

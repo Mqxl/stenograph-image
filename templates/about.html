@@ -1,38 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>О нас</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/decrypt/">Расшифровать</a></li>
-                    <li><a href="/about/">О нас</a></li>
-                    <li><a href="/contact/">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <section class="main-content">
-        <div class="container">
-            <div class="about-section">
-    <h2>О нас</h2>
-    <p>Мы - команда профессионалов, занимающаяся разработкой высококачественных веб-приложений.</p>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="about-container">
+    <div class="about-header">
+        <h2>О нас</h2>
+    </div>
+    <div class="about-details">
+        <p>Мы - команда профессионалов, занимающаяся разработкой высококачественных веб-приложений.</p>
+    </div>
 </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Все права защищены</p>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock %}

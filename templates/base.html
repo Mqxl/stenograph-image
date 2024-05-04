@@ -1,0 +1,157 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ current_language }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Steno" %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/ico" href="{% static 'favicon.ico' %}" >
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">{% trans "Steno" %}</div>
+            <nav id="navbar">
+                <ul class="navbar-items flexbox-col">
+                    <li class="navbar-logo flexbox-left">
+                        <a class="navbar-item-inner flexbox">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+                                <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+                                <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+                            </svg>
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'encrypt_text' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-home" style="font-size:24px;"></i>
+                            </div>
+                            <span class="link-text">{% trans "Главная" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'profile' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <span class="link-text">{% trans "Профиль" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="/decrypt/">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-unlock"></i>
+                            </div>
+                            <span class="link-text">{% trans "Расшифровать текста" %}</span>
+                        </a>
+                    </li>
+                        <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'encrypt-image' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-unlock"></i>
+                            </div>
+                            <span class="link-text">{% trans "Расшифровать изображения" %}</span>
+                        </a>
+                    </li>
+                        <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'decrypt-image' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-unlock"></i>
+                            </div>
+                            <span class="link-text">{% trans "Шифровка изображения" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="/about/">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-info"></i>
+                            </div>
+                            <span class="link-text">{% trans "О нас" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="/contact/">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-address-book"></i>
+                            </div>
+                            <span class="link-text">{% trans "Контакты" %}</span>
+                        </a>
+                    <a class="navbar-item-inner flexbox-left" href="/contact/">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-address-book"></i>
+                            </div>
+                            <span class="link-text">{% trans "Контакты" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                        <form id="logout-form" action="{% url 'cust-logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                        <a class="navbar-item-inner flexbox-left" href="#" onclick="confirmLogout(event)">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa fa-window-close"></i>
+                            </div>
+                            <span class="link-text">{% trans "Выйти" %}</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'login' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa-regular fa-circle-user"></i>
+                            </div>
+                            <span class="link-text">{% trans "Войти" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'signup' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </div>
+                            <span class="link-text">{% trans "Регистрация" %}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                <li class="navbar-item flexbox-left">
+                        <form action="{% url 'set_language' %}" method="post" class="navbar-item-inner flexbox-left">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <select name="language" onchange="this.form.submit()">
+        {% get_current_language as current_language %}
+        {% get_available_languages as available_languages %}
+        {% for lang_code, lang_name in available_languages %}
+            <option value="{{ lang_code }}" {% if lang_code == current_language %}selected{% endif %}>{{ lang_name }}</option>
+        {% endfor %}
+    </select>
+</form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="main-content">
+        <div class="container-main">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </section>
+    <footer>
+        <div class="container-main">
+            <p style="font-size: 10px">&copy; {% trans "2024 Все права защищены" %}</p>
+        </div>
+    </footer>
+    <script>
+        function confirmLogout(event) {
+            event.preventDefault();
+            if (confirm('{% trans "Вы уверены, что хотите выйти?" %}')) {
+                document.getElementById('logout-form').submit();
+            }
+        }
+    </script>
+</body>
+</html>

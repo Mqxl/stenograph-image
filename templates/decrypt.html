@@ -1,48 +1,39 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расшифровать текст из изображения</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Расшифровать текст из изображения</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/decrypt/">Расшифровать</a></li>
-                    <li><a href="/about/">О нас</a></li>
-                    <li><a href="/contact/">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <section class="main-content">
-        <div class="container">
-            <h2>Загрузите изображение и ключ для расшифровки</h2>
-            <br>
-            <form action="{% url 'decrypt_text' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="upload-container">
-    <label for="image-upload" class="custom-file-input">Выберите файл (изображение)</label>
-    <input type="file" name="image" id="image-upload" accept="image/*" required>
-</div>
-<div class="upload-container">
-    <label for="key-upload" class="custom-file-input">Выберите файл (ключ)</label>
-    <input type="file" name="key" id="key-upload" accept=".txt" required>
-</div>
-                <button type="submit">Расшифровать</button>
-            </form>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Все права защищены</p> 
-        </div>
-    </footer>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="decrypt-form-container">
+        <h2>Загрузите изображение и ключ для расшифровки</h2>
+        <form action="{% url 'decrypt_text' %}" method="POST" enctype="multipart/form-data" class="decrypt-form" id="decrypt-form">
+            {% csrf_token %}
+            <div class="upload-container" id="image-drop-area">
+                <label for="image-upload">
+                    <div class="drop-message">
+                        <div class="upload-icon">
+                            <i class="fa fa-file"></i>
+                        </div>
+                        <p>Перетащите изображение сюда<br>или нажмите, чтобы выбрать</p>
+                    </div>
+                </label>
+                <input type="file" name="image" id="image-upload" accept="image/*" required>
+            </div>
+            <div class="upload-container" id="key-drop-area">
+                <label for="key-upload">
+                    <div class="drop-message">
+                        <div class="upload-icon">
+                            <i class="fa fa-file"></i>
+                        </div>
+                        <p>Перетащите текстовый файл сюда<br>или нажмите, чтобы выбрать</p>
+                    </div>
+                </label>
+                <input type="file" name="key" id="key-upload" accept=".txt" required>
+            </div>
+            <button type="submit" class="button">Расшифровать</button>
+        </form>
+        {% if decrypted_text %}
+            <div class="decrypted-text">
+                <h3>Расшифрованный текст:</h3>
+                <p>{{ decrypted_text }}</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -15,8 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls.i18n import urlpatterns as i18n_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
+from detector.forms import LanguageForm
 from detector.views import *
 
 urlpatterns = [
@@ -25,4 +29,15 @@ urlpatterns = [
     path('decrypt/', decrypt_text, name='decrypt_text'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
-]
+    path('', include('django.contrib.auth.urls')),  # Включаем стандартные URL для аутентификации
+    path('cust-logout/', CustomLogoutView.as_view(), name='cust-logout'),
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('signup/', SignUp.as_view(), name='signup'),
+    path('profile/', profile, name='profile'),
+    path('set_language/', LanguageForm, name='set_language'),
+    path('encrypt-image/', encrypt_image, name='encrypt-image'),
+    path('decrypt-image/', decrypt_image, name='decrypt-image'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_urlpatterns

@@ -1,44 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Зашифровать текст в изображение</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Загрузите изображение и зашифруйте текст</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/decrypt/">Расшифровать</a></li>
-                    <li><a href="/about/">О нас</a></li>
-                    <li><a href="/contact/">Контакты</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <section class="main-content">
-        <div class="container">
-            <form action="{% url 'encrypt_text' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="upload-container">
-                    <label for="image-upload" class="custom-file-input">Выберите файл (изображение)</label>
-                <input type="file" name="image" id="image-upload" accept="image/*" required>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="encrypt-form-container">
+    <h2>Зашифровать текст в изображение</h2>
+    <form action="{% url 'encrypt_text' %}" method="POST" enctype="multipart/form-data" class="encrypt-form" id="encrypt-form">
+        {% csrf_token %}
+        <div class="upload-container" id="image-drop-area">
+            <label for="image-upload">
+                <div class="drop-message">
+                    <div class="upload-icon">
+                        <i class="fa fa-file"></i>
                     </div>
-                <textarea name="text" class="custom-textarea" placeholder="Введите текст для шифрования" required></textarea>
-                <button type="submit">Зашифровать</button>
-                
-            </form>
+                    <p>Перетащите изображение сюда<br>или нажмите, чтобы выбрать</p>
+                </div>
+            </label>
+            <input type="file" name="image" id="image-upload" accept="image/*" required>
         </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Все права защищены</p>
+        <div class="form-group">
+            <label for="text">Текст для шифрования</label>
+            <textarea name="text" id="text" class="custom-textarea" placeholder="Введите текст для шифрования" required></textarea>
         </div>
-    </footer>
-</body>
-</html>
+        <button type="submit" class="button">Зашифровать</button>
+    </form>
+</div>
+    
+{% endblock %}
