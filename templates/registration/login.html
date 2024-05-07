@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load i18n crispy_forms_tags %}
 
 {% block content %}
 <div class="login-form-container">
-    <h2 style="font-size: 34px; color: #27130f">Вход</h2>
+    <h2 style="font-size: 34px; color: #27130f">{% trans "Вход" %}</h2>
     <br>
     <form method="post" class="login-form">
       {% csrf_token %}
       {{ form|crispy }}
-      <button type="submit" class="button">Войти</button>
+      <button type="submit" class="button">{% trans "Войти" %}</button>
     </form>
     <div class="register-link">
-      Нету аккаунта? <a href="{% url 'signup' %}">Зарегистрируйся</a>
+      {% trans "Нету аккаунта?" %} <a href="{% url 'signup' %}">{% trans "Зарегистрируйся" %}</a>
     </div>
 </div>
 {% endblock %}

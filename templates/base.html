@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Steno" %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" type="image/ico" href="{% static 'favicon.ico' %}" >
 </head>
 <body>
@@ -27,9 +27,9 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="navbar-item flexbox-left">
-                        <a class="navbar-item-inner flexbox-left" href="{% url 'encrypt_text' %}">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'home' %}">
                             <div class="navbar-item-inner-icon-wrapper flexbox">
-                                <i class="fa fa-home" style="font-size:24px;"></i>
+                                <i class="fa fa-home" style="font-size:20px;"></i>
                             </div>
                             <span class="link-text">{% trans "Главная" %}</span>
                         </a>
@@ -43,27 +43,35 @@
                         </a>
                     </li>
                     <li class="navbar-item flexbox-left">
+                        <a class="navbar-item-inner flexbox-left" href="{% url 'encrypt_text' %}">
+                            <div class="navbar-item-inner-icon-wrapper flexbox">
+                                <i class="fa-solid fa-lock" style="font-size:20px;"></i>
+                            </div>
+                            <span class="link-text">{% trans "Шифрование текста в изображения" %}</span>
+                        </a>
+                    </li>
+                    <li class="navbar-item flexbox-left">
                         <a class="navbar-item-inner flexbox-left" href="/decrypt/">
                             <div class="navbar-item-inner-icon-wrapper flexbox">
-                                <i class="fa fa-unlock"></i>
+                                <i class="fa-solid fa-unlock"></i>
                             </div>
-                            <span class="link-text">{% trans "Расшифровать текста" %}</span>
+                            <span class="link-text">{% trans "Расшифровка текста из изображения" %}</span>
                         </a>
                     </li>
                         <li class="navbar-item flexbox-left">
                         <a class="navbar-item-inner flexbox-left" href="{% url 'encrypt-image' %}">
                             <div class="navbar-item-inner-icon-wrapper flexbox">
-                                <i class="fa fa-unlock"></i>
+                                <i class="fa-solid fa-file-export"></i>
                             </div>
-                            <span class="link-text">{% trans "Расшифровать изображения" %}</span>
+                            <span class="link-text">{% trans "Скрыть изображения" %}</span>
                         </a>
                     </li>
                         <li class="navbar-item flexbox-left">
                         <a class="navbar-item-inner flexbox-left" href="{% url 'decrypt-image' %}">
                             <div class="navbar-item-inner-icon-wrapper flexbox">
-                                <i class="fa fa-unlock"></i>
+                                <i class="fa-solid fa-file-import"></i>
                             </div>
-                            <span class="link-text">{% trans "Шифровка изображения" %}</span>
+                            <span class="link-text">{% trans "Извлечение скрытых изображений" %}</span>
                         </a>
                     </li>
                     <li class="navbar-item flexbox-left">
@@ -76,12 +84,6 @@
                     </li>
                     <li class="navbar-item flexbox-left">
                         <a class="navbar-item-inner flexbox-left" href="/contact/">
-                            <div class="navbar-item-inner-icon-wrapper flexbox">
-                                <i class="fa fa-address-book"></i>
-                            </div>
-                            <span class="link-text">{% trans "Контакты" %}</span>
-                        </a>
-                    <a class="navbar-item-inner flexbox-left" href="/contact/">
                             <div class="navbar-item-inner-icon-wrapper flexbox">
                                 <i class="fa fa-address-book"></i>
                             </div>
@@ -111,7 +113,7 @@
                     <li class="navbar-item flexbox-left">
                         <a class="navbar-item-inner flexbox-left" href="{% url 'signup' %}">
                             <div class="navbar-item-inner-icon-wrapper flexbox">
-                                <ion-icon name="settings-outline"></ion-icon>
+                                <i class="fa-regular fa-id-card"></i>
                             </div>
                             <span class="link-text">{% trans "Регистрация" %}</span>
                         </a>
@@ -121,14 +123,20 @@
                         <form action="{% url 'set_language' %}" method="post" class="navbar-item-inner flexbox-left">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ request.path }}">
-    <select name="language" onchange="this.form.submit()">
-        {% get_current_language as current_language %}
-        {% get_available_languages as available_languages %}
-        {% for lang_code, lang_name in available_languages %}
-            <option value="{{ lang_code }}" {% if lang_code == current_language %}selected{% endif %}>{{ lang_name }}</option>
-        {% endfor %}
-    </select>
+    {% get_current_language as current_language %}
+    {% get_available_languages as available_languages %}
+    {% for lang_code, lang_name in available_languages %}
+        <button type="submit" name="language" value="{{ lang_code }}" style="border: none; background: none; cursor: pointer; padding: 0.3rem 0.5rem; font-size: 0.8rem; color:#3f51b5 ">
+            {% if lang_code == current_language %}
+                <strong>{{ lang_name }}</strong>
+            {% else %}
+                {{ lang_name }}
+            {% endif %}
+        </button>
+    {% endfor %}
 </form>
+          
+
                     </li>
                 </ul>
             </nav>

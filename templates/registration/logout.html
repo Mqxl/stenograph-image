@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="logout-message">
-    <h2>Вы успешно вышли из аккаунта!</h2>
-    <p>Спасибо за использование нашего сервиса.</p>
-    <p>Через несколько секунд вы будете перенаправлены на главную страницу.</p>
+    <h2>{% trans "Вы успешно вышли из аккаунта!" %}</h2>
+    <p>{% trans "Спасибо за использование нашего сервиса." %}</p>
+    <p>{% trans "Через несколько секунд вы будете перенаправлены на главную страницу." %}</p>
 </div>
-    <script>
-    // Redirect to the home page after 3 seconds
-    setTimeout(function() {
-        window.location.href = "{% url 'encrypt_text' %}";
-    }, 2000);
+<script>
+// Redirect to the home page after 3 seconds
+setTimeout(function() {
+    window.location.href = "{% url 'home' %}";
+}, 3000);
 </script>
 
 {% endblock %}
-

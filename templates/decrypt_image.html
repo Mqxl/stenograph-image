@@ -1,28 +1,46 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-    <div class="decrypt-form-container">
-        <h2>Загрузите скрытое изображение для расшифровки</h2>
-        <form action="{% url 'decrypt-image' %}" method="POST" enctype="multipart/form-data" class="decrypt-form" id="decrypt-form">
-            {% csrf_token %}
-            <div class="upload-container" id="hidden-image-drop-area">
-                <label for="hidden-image-upload">
-                    <div class="drop-message">
-                        <div class="upload-icon">
-                            <i class="fa fa-file"></i>
-                        </div>
-                        <p>Перетащите скрытое изображение сюда<br>или нажмите, чтобы выбрать</p>
+<style>
+.button {
+    padding: 12px 30px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+</style>
+<div class="decrypt-form-container">
+    <h2>{% trans "Загрузите скрытое изображение для расшифровки" %}</h2>
+    <form action="{% url 'decrypt-image' %}" method="POST" enctype="multipart/form-data" class="decrypt-form" id="decrypt-form">
+        {% csrf_token %}
+        <div class="upload-container" id="hidden-image-drop-area">
+            <label for="hidden-image-upload">
+                <div class="drop-message">
+                    <div class="upload-icon">
+                        <i class="fa fa-file"></i>
                     </div>
-                </label>
-                <input type="file" name="hidden_image" id="hidden-image-upload" accept="image/*" required>
+                    <p>{% trans "Перетащите скрытое изображение сюда" %}<br>{% trans "или нажмите, чтобы выбрать" %}</p>
+                </div>
+            </label>
+            <input type="file" name="hidden_image" id="hidden-image-upload" accept="image/*" required>
+        </div>
+        <button type="submit" class="button">{% trans "Расшифровать" %}</button>
+    </form>
+    {% if decrypted_image %}
+    <div class="decrypted-image" style="position: relative;">
+        <h3>{% trans "Расшифрованное изображение:" %}</h3>
+        <img src="{{ decrypted_image }}" alt="{% trans "Расшифрованное изображение" %}" style="max-width: 100%; max-height: 400px;">
+        <div style="display: flex; justify-content: left;">
+            <div style="position: absolute; top: 50%; right: 630px; transform: translateY(50%);">
+                <button class="button"><a href="{{ decrypted_image }}" download="{% trans "decrypted_image" %}" style="color: white; text-decoration: none;">{% trans "Скачать" %}</a></button>
             </div>
-            <button type="submit" class="button">Расшифровать</button>
-        </form>
-        {% if decrypted_image %}
-            <div class="decrypted-image">
-                <h3>Расшифрованное изображение:</h3>
-                <img src="{{ decrypted_image }}" alt="Расшифрованное изображение">
-            </div>
-        {% endif %}
+        </div>
     </div>
+    {% endif %}
+</div>
 {% endblock %}

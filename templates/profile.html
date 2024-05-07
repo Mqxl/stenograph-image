@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 <div class="profile-container">
     <div class="profile-header">
         <div class="profile-avatar">
-            <img src="{% static 'img/img.png' %}" alt="Avatar">
+            <img src="{% static 'img/img.png' %}" alt="{% trans "Avatar" %}">
         </div>
         <div class="profile-userinfo">
             <h2>{{ user.username }}</h2>
-            <p>Email: {{ user.email }}</p>
-            <p>Имя: {{ user.first_name }} {{ user.last_name }}</p>
-            <p>Дата рождения: {{ user.birth_date }}</p>
+            <p>{% trans "Email:" %} {{ user.email }}</p>
+            <p>{% trans "Имя:" %} {{ user.first_name }} {{ user.last_name }}</p>
+            <p>{% trans "Дата рождения:" %} {{ user.birth_date }}</p>
         </div>
     </div>
     <div class="profile-details">
-        <h3>Дополнительная информация</h3>
-        <p>Здесь может быть ваша дополнительная информация</p>
     </div>
 </div>
 {% endblock %}

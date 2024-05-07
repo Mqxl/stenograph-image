@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="contact-container">
     <div class="contact-header">
-        <h2>Контакты</h2>
+        <h2>{% trans "Контакты" %}</h2>
     </div>
     <div class="contact-details">
-        <p>Адрес: ул. Примерная, д. 123, г. Примерный</p>
-        <p>Телефон: +7 (123) 456-78-90</p>
-        <p>Email: example@example.com</p>
+        <p>{% trans "Адрес:" %} ул. Примерная, д. 123, г. Примерный</p>
+        <p>{% trans "Телефон:" %} +7 (123) 456-78-90</p>
+        <p>{% trans "Email:" %} example@example.com</p>
     </div>
 </div>
 {% endblock %}

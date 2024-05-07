@@ -1,39 +1,40 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-    <div class="decrypt-form-container">
-        <h2>Загрузите изображение и ключ для расшифровки</h2>
-        <form action="{% url 'decrypt_text' %}" method="POST" enctype="multipart/form-data" class="decrypt-form" id="decrypt-form">
-            {% csrf_token %}
-            <div class="upload-container" id="image-drop-area">
-                <label for="image-upload">
-                    <div class="drop-message">
-                        <div class="upload-icon">
-                            <i class="fa fa-file"></i>
-                        </div>
-                        <p>Перетащите изображение сюда<br>или нажмите, чтобы выбрать</p>
+<div class="decrypt-form-container">
+    <h2>{% trans "Загрузите изображение и ключ для расшифровки" %}</h2>
+    <form action="{% url 'decrypt_text' %}" method="POST" enctype="multipart/form-data" class="decrypt-form" id="decrypt-form">
+        {% csrf_token %}
+        <div class="upload-container" id="image-drop-area">
+            <label for="image-upload">
+                <div class="drop-message">
+                    <div class="upload-icon">
+                        <i class="fa fa-file"></i>
                     </div>
-                </label>
-                <input type="file" name="image" id="image-upload" accept="image/*" required>
-            </div>
-            <div class="upload-container" id="key-drop-area">
-                <label for="key-upload">
-                    <div class="drop-message">
-                        <div class="upload-icon">
-                            <i class="fa fa-file"></i>
-                        </div>
-                        <p>Перетащите текстовый файл сюда<br>или нажмите, чтобы выбрать</p>
+                    <p>{% trans "Перетащите изображение сюда" %}<br>{% trans "или нажмите, чтобы выбрать" %}</p>
+                </div>
+            </label>
+            <input type="file" name="image" id="image-upload" accept="image/*" required>
+        </div>
+        <div class="upload-container" id="key-drop-area">
+            <label for="key-upload">
+                <div class="drop-message">
+                    <div class="upload-icon">
+                        <i class="fa fa-file"></i>
                     </div>
-                </label>
-                <input type="file" name="key" id="key-upload" accept=".txt" required>
-            </div>
-            <button type="submit" class="button">Расшифровать</button>
-        </form>
-        {% if decrypted_text %}
-            <div class="decrypted-text">
-                <h3>Расшифрованный текст:</h3>
-                <p>{{ decrypted_text }}</p>
-            </div>
-        {% endif %}
+                    <p>{% trans "Перетащите текстовый файл сюда" %}<br>{% trans "или нажмите, чтобы выбрать" %}</p>
+                </div>
+            </label>
+            <input type="file" name="key" id="key-upload" accept=".txt" required>
+        </div>
+        <button type="submit" class="button">{% trans "Расшифровать" %}</button>
+    </form>
+    {% if decrypted_text %}
+    <div class="decrypted-text">
+        <h3>{% trans "Расшифрованный текст:" %}</h3>
+        <p>{{ decrypted_text }}</p>
     </div>
+    {% endif %}
+</div>
 {% endblock %}

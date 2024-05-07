@@ -25,11 +25,11 @@ from detector.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', encrypt_text, name='encrypt_text'),
+    path('', home, name='home'),
+    path('encrypt_text', encrypt_text, name='encrypt_text'),
     path('decrypt/', decrypt_text, name='decrypt_text'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
-    path('', include('django.contrib.auth.urls')),  # Включаем стандартные URL для аутентификации
     path('cust-logout/', CustomLogoutView.as_view(), name='cust-logout'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('signup/', SignUp.as_view(), name='signup'),

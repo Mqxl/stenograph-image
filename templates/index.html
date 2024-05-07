@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="encrypt-form-container">
-    <h2>Зашифровать текст в изображение</h2>
+    <h2>{% trans "Зашифровать текст в изображение" %}</h2>
     <form action="{% url 'encrypt_text' %}" method="POST" enctype="multipart/form-data" class="encrypt-form" id="encrypt-form">
         {% csrf_token %}
         <div class="upload-container" id="image-drop-area">
@@ -11,17 +12,16 @@
                     <div class="upload-icon">
                         <i class="fa fa-file"></i>
                     </div>
-                    <p>Перетащите изображение сюда<br>или нажмите, чтобы выбрать</p>
+                    <p>{% trans "Перетащите изображение сюда" %}<br>{% trans "или нажмите, чтобы выбрать" %}</p>
                 </div>
             </label>
             <input type="file" name="image" id="image-upload" accept="image/*" required>
         </div>
         <div class="form-group">
-            <label for="text">Текст для шифрования</label>
-            <textarea name="text" id="text" class="custom-textarea" placeholder="Введите текст для шифрования" required></textarea>
+            <label for="text">{% trans "Текст для шифрования" %}</label>
+            <textarea name="text" id="text" class="custom-textarea" placeholder="{% trans "Введите текст для шифрования" %}" required></textarea>
         </div>
-        <button type="submit" class="button">Зашифровать</button>
+        <button type="submit" class="button">{% trans "Зашифровать" %}</button>
     </form>
 </div>
-    
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-03 18:17+0500\n"
+"POT-Creation-Date: 2024-05-07 14:24+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,377 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-#: .\templates\base.html:11 .\templates\base.html:19
-msgid "Steno"
-msgstr ""
 
-#: .\templates\base.html:36
-msgid "Главная"
-msgstr "Басты бет"
-
-#: .\templates\base.html:44
-msgid "Профиль"
-msgstr ""
-
-#: .\templates\base.html:52
-msgid "Расшифровать"
-msgstr "Дешифрлеу"
-
-#: .\templates\base.html:60
+#: .\templates\about.html:7 .\templates\base.html:82
 msgid "О нас"
 msgstr "Біз туралы"
 
-#: .\templates\base.html:68
+#: .\templates\about.html:11
+msgid ""
+"Привет! Я студент, увлеченный разработкой веб-приложений. Этот сайт - мой "
+"проект, где я стремлюсь создать высококачественное веб-приложение для "
+"стенографии."
+msgstr ""
+"Сәлем! Мен веб-қосымшаларды әзірлеуге ынталы студентпін. Бұл сайт - менің "
+"үшін жоғары сапалы веб-қосымша жасауға ұмтылатын жобастенографиясы."
+
+#: .\templates\about.html:14
+msgid ""
+"Моя страсть к программированию и технологиям вдохновила меня на создание "
+"этого сайта. Я учусь и исследую новые подходы к разработке, чтобы предложить "
+"пользователям инновационное и удобное приложение для записи и перевода речи."
+msgstr ""
+"Бағдарламалау мен технологияға деген құштарлығым мені құруға "
+"шабыттандырдыОсы тораптың. Мен жаңа тәсілдерді үйреніп, "
+"зерттеймінпайдаланушыларға сөйлеуді жазуға және аударуға арналған "
+"инновациялық және ыңғайлы қосымша."
+
+#: .\templates\about.html:17
+msgid ""
+"Хотя я работаю в одиночку, я стремлюсь к профессионализму и качеству, "
+"которые обычно свойственны команде. Я уделяю внимание каждой детали, чтобы "
+"обеспечить удобство использования и эффективность приложения."
+msgstr ""
+"Мен жалғыз жұмыс істесем де, кәсібилік пен сапаға ұмтыламынәдетте пәрменге "
+"тән. Мен қолданудың ыңғайлылығы мен тиімділігін қамтамасыз ету."
+
+#: .\templates\about.html:20
+msgid ""
+"Моя цель - упростить процесс стенографии для студентов, профессионалов и "
+"всех, кто в ней нуждается. Я стремлюсь создать приложение, которое поможет "
+"им работать быстрее и эффективнее."
+msgstr ""
+"Менің мақсатым - студенттер мен кәсіби мамандар үшін стенографияны "
+"жеңілдетудеген сауалдарға жауап берді. Мен көмектесетін бағдарлама жасауға "
+"тырысамын олар тезірек әрі тиімді жұмыс істейді."
+
+#: .\templates\about.html:23
+msgid ""
+"Присоединяйтесь ко мне в этом увлекательном путешествии! Я уверен, что с "
+"моим приложением ваша работа с текстом станет более удобной и продуктивной."
+msgstr ""
+"Осы қызықты саяхатқа маған қосылыңыз! Мен сенімдімін бағдарламасында сіздің "
+"мәтінмен жұмыс істеуіңіз ыңғайлы және өнімді болады."
+
+#: .\templates\base.html:9 .\templates\base.html:17
+msgid "Steno"
+msgstr ""
+
+#: .\templates\base.html:34
+msgid "Главная"
+msgstr "Басты бет"
+
+#: .\templates\base.html:42
+msgid "Профиль"
+msgstr "Профиль"
+
+#: .\templates\base.html:50
+msgid "Шифрование текста в изображения"
+msgstr "Суреттердегі мәтінді шифрлау"
+
+#: .\templates\base.html:58
+msgid "Расшифровка текста из изображения"
+msgstr "Суреттегі мәтіннің мағынасын ашу"
+
+#: .\templates\base.html:66
+msgid "Скрыть изображения"
+msgstr "Кескінді жасыру"
+
+#: .\templates\base.html:74
+msgid "Извлечение скрытых изображений"
+msgstr "Жасырын суреттерді шығару"
+
+#: .\templates\base.html:90 .\templates\contact.html:7
 msgid "Контакты"
 msgstr "Контактілер"
 
-#: .\templates\base.html:79
+#: .\templates\base.html:101
 msgid "Выйти"
 msgstr "Шығу"
 
-#: .\templates\base.html:88
+#: .\templates\base.html:110 .\templates\registration\login.html:11
+#: .\templates\registration\signup.html:14
 msgid "Войти"
 msgstr "Кіру"
 
-#: .\templates\base.html:96
+#: .\templates\base.html:118 .\templates\registration\signup.html:6
 msgid "Регистрация"
 msgstr "Тіркелу"
 
-#: .\templates\base.html:112
+#: .\templates\base.html:153
 msgid "2024 Все права защищены"
 msgstr "2024 Барлық құқықтар сақталған"
 
-#: .\templates\base.html:118
+#: .\templates\base.html:159
 msgid "Вы уверены, что хотите выйти?"
-msgstr "Сыртқа шыққыңыз келетініне сенімдісіз бе"
+msgstr "Шыққыңыз келе ме?"
+
+#: .\templates\contact.html:10
+msgid "Адрес:"
+msgstr "Мекенжайы:"
+
+#: .\templates\contact.html:11
+msgid "Телефон:"
+msgstr "Телефон:"
+
+#: .\templates\contact.html:12 .\templates\profile.html:12
+msgid "Email:"
+msgstr "Email:"
+
+#: .\templates\decrypt.html:6
+msgid "Загрузите изображение и ключ для расшифровки"
+msgstr "Сурет пен кілтті жүктеп алыңыз"
+
+#: .\templates\decrypt.html:15 .\templates\index.html:15
+msgid "Перетащите изображение сюда"
+msgstr "Суретті осы жерге апарыңыз"
+
+#: .\templates\decrypt.html:15 .\templates\decrypt.html:26
+#: .\templates\decrypt_image.html:27 .\templates\encrypt_image.html:15
+#: .\templates\encrypt_image.html:26 .\templates\index.html:15
+msgid "или нажмите, чтобы выбрать"
+msgstr "немесе таңдау үшін басыңыз"
+
+#: .\templates\decrypt.html:26
+msgid "Перетащите текстовый файл сюда"
+msgstr "Мәтін файлын осы жерге апарыңыз"
+
+#: .\templates\decrypt.html:31 .\templates\decrypt_image.html:32
+msgid "Расшифровать"
+msgstr "Шифрын ашу"
+
+#: .\templates\decrypt.html:35
+#, fuzzy
+#| msgid "Расшифровать"
+msgid "Расшифрованный текст:"
+msgstr "Толық мәтін:"
+
+#: .\templates\decrypt_image.html:18
+msgid "Загрузите скрытое изображение для расшифровки"
+msgstr "Шифрды ашу үшін жасырын суретті жүктеп алыңыз"
+
+#: .\templates\decrypt_image.html:27
+msgid "Перетащите скрытое изображение сюда"
+msgstr "Жасырын суретті осы жерге апарыңыз"
+
+#: .\templates\decrypt_image.html:36
+msgid "Расшифрованное изображение:"
+msgstr "Шифрланған кескін:"
+
+#: .\templates\decrypt_image.html:37
+msgid "Расшифрованное изображение"
+msgstr "Шифрланған сурет"
+
+#: .\templates\decrypt_image.html:40
+msgid "decrypted_image"
+msgstr ""
+
+#: .\templates\decrypt_image.html:40 .\templates\encrypt_result.html:48
+msgid "Скачать"
+msgstr "Жүктеп алу"
+
+#: .\templates\encrypt_image.html:6
+msgid "Загрузите изображение, которое нужно скрыть, и обложку"
+msgstr "Жасыру керек суретті және мұқабаны қотарыңыз"
+
+#: .\templates\encrypt_image.html:15
+msgid "Перетащите изображение, которое нужно скрыть, сюда"
+msgstr "Жасыру керек суретті осы жерге апарыңыз"
+
+#: .\templates\encrypt_image.html:26
+msgid "Перетащите обложку сюда"
+msgstr "Мұқабаны осы жерге жылжытыңыз"
+
+#: .\templates\encrypt_image.html:31 .\templates\index.html:24
+#, fuzzy
+#| msgid "Расшифровать"
+msgid "Зашифровать"
+msgstr "Шифрлау"
+
+#: .\templates\encrypt_image.html:35
+msgid "Зашифрованное изображение:"
+msgstr "Шифрланған кескін:"
+
+#: .\templates\encrypt_image.html:36 .\templates\encrypt_result.html:46
+#: .\templates\encrypt_result.html:47
+msgid "Зашифрованное изображение"
+msgstr "Шифрланған кескін"
+
+#: .\templates\encrypted_success.html:6
+msgid "Зашифрование завершено!"
+msgstr "Шифрлау аяқталды!"
+
+#: .\templates\encrypted_success.html:8
+msgid "Скачать зашифрованное изображение"
+msgstr "Шифрланған суретті жүктеу"
+
+#: .\templates\encrypted_success.html:9
+msgid "Скачать файл с ключами"
+msgstr "Кілттері бар файлды жүктеу"
+
+#: .\templates\home.html:47
+msgid "Добро пожаловать на наш сайт!"
+msgstr "Біздің сайтқа қош келдіңіз!"
+
+#: .\templates\home.html:48
+msgid ""
+"Мы рады приветствовать вас на нашем сайте, где вы можете узнать о множестве "
+"интересных функций, включая шифрование и дешифрование текста, а также "
+"скрытие фотографий в других изображениях."
+msgstr ""
+"Сізді біздің веб-сайтымызға қарсы алуға қуаныштымыз, онда сіз көптеген "
+"нәрселер туралы біле аласызмәтінді шифрлау мен шифрды шешуді қоса алғанда, "
+"қызықты мүмкіндіктер, сондай-ақфотосуреттерді басқа суреттерде жасыру."
+
+#: .\templates\home.html:55
+msgid "Шифрование и дешифрование текста:"
+msgstr "Мәтінді шифрлау және шифрын ашу:"
+
+#: .\templates\home.html:56
+msgid ""
+"Шифрование текста - это процесс преобразования обычного текста в непонятный "
+"код, который может быть прочитан только с помощью правильного ключа или "
+"алгоритма. Дешифрование - обратный процесс, при котором зашифрованный текст "
+"преобразуется обратно в исходный."
+msgstr ""
+"Мәтінді шифрлау - бұл кәдімгі мәтінді түсініксіз мәтінге түрлендіру "
+"процесітек дұрыс кілт немесеалгоритм. Дешифрлеу - кері процесс, ол кезде "
+"шифрланған мәтінбастапқы түріне қайта түрлендіріледі."
+
+#: .\templates\home.html:60
+msgid "Скрытие фото в других изображениях:"
+msgstr "Басқа суреттердегі суреттерді жасыру:"
+
+#: .\templates\home.html:61
+msgid ""
+"Эта функция позволяет вам скрыть одно изображение внутри другого, делая его "
+"незаметным для обычного взгляда. Это может быть использовано для "
+"стеганографии - способа передачи информации, при котором сокрытые данные не "
+"вызывают подозрений."
+msgstr ""
+"Бұл функция суретті жасырып, оны жасыруға мүмкіндік бередікәдімгі көзқарасқа "
+"көрінбейтін. Бұл үшін пайдаланылуы мүмкінстеганография - жасырын деректер "
+"жоқ ақпаратты берукүдік туғызады.Бұл функция суретті жасырып, оны жасыруға "
+"мүмкіндік бередідеген сөздері кәдімгі көзқарасқа көрінбейді. Бұл үшін "
+"пайдаланылуы мүмкін "
+
+#: .\templates\home.html:66
+msgid "Пример использования:"
+msgstr "Пайдалану мысалы:"
+
+#: .\templates\home.html:68
+msgid "Шифрование текста:"
+msgstr "Мәтінді шифрлау:"
+
+#: .\templates\home.html:70
+msgid "Введите текст, который вы хотите зашифровать."
+msgstr "Шифрлағыңыз келетін мәтінді енгізіңіз."
+
+#: .\templates\home.html:71
+msgid "Выберите ключ или метод шифрования."
+msgstr "Кілтті немесе шифрлау әдісін таңдаңыз."
+
+#: .\templates\home.html:72
+msgid "Получите зашифрованный текст."
+msgstr "Шифрланған мәтінді алыңыз."
+
+#: .\templates\home.html:77
+#, fuzzy
+#| msgid "Расшифровать"
+msgid "Дешифрование текста:"
+msgstr "Мәтіннің шифрын ашу:"
+
+#: .\templates\home.html:79
+msgid "Введите зашифрованный текст."
+msgstr "Шифрланған мәтінді енгізіңіз."
+
+#: .\templates\home.html:80
+msgid "Введите ключ или метод, использованный для шифрования."
+msgstr "Шифрлау үшін пайдаланылған кілтті немесе әдісті енгізіңіз."
+
+#: .\templates\home.html:81
+msgid "Получите исходный текст."
+msgstr "Бастапқы мәтінді алыңыз."
+
+#: .\templates\home.html:86
+msgid "Скрытие фото в другом изображении:"
+msgstr "Суретті басқа суретте жасыру:"
+
+#: .\templates\home.html:88
+msgid "Выберите изображение, которое вы хотите скрыть."
+msgstr "Жасырғыңыз келетін суретті таңдаңыз."
+
+#: .\templates\home.html:89
+msgid "Выберите изображение, в которое вы хотите его скрыть."
+msgstr "Жасырғыңыз келетін суретті таңдаңыз."
+
+#: .\templates\home.html:90
+msgid ""
+"Получите новое изображение, в котором первое изображение скрыто внутри "
+"второго."
+msgstr "Бірінші сурет екіншісінің ішінде жасырылған жаңа суретті алыңыз."
+
+#: .\templates\index.html:6
+msgid "Зашифровать текст в изображение"
+msgstr "Мәтінді суретке шифрлау"
+
+#: .\templates\index.html:21
+#, fuzzy
+#| msgid "Расшифровать"
+msgid "Текст для шифрования"
+msgstr "Шифрлауға арналған мәтін"
+
+#: .\templates\index.html:22
+msgid "Введите текст для шифрования"
+msgstr "Шифрлау үшін мәтінді енгізіңіз"
+
+#: .\templates\profile.html:8
+msgid "Avatar"
+msgstr ""
+
+#: .\templates\profile.html:13
+msgid "Имя:"
+msgstr "Аты:"
+
+#: .\templates\profile.html:14
+msgid "Дата рождения:"
+msgstr "Туған күні:"
+
+#: .\templates\registration\login.html:6
+msgid "Вход"
+msgstr "Кіру"
+
+#: .\templates\registration\login.html:14
+msgid "Нету аккаунта?"
+msgstr "Есептік жазбаңыз жоқ па?"
+
+#: .\templates\registration\login.html:14
+#, fuzzy
+#| msgid "Регистрация"
+msgid "Зарегистрируйся"
+msgstr "Тіркелу"
+
+#: .\templates\registration\logout.html:6
+msgid "Вы успешно вышли из аккаунта!"
+msgstr "Тіркелгіден сәтті шықтық!"
+
+#: .\templates\registration\logout.html:7
+msgid "Спасибо за использование нашего сервиса."
+msgstr "Біздің сервисті пайдаланғаныңыз үшін рахмет."
+
+#: .\templates\registration\logout.html:8
+msgid "Через несколько секунд вы будете перенаправлены на главную страницу."
+msgstr "Бірнеше секундтан кейін сіз басты бетке қайта бағытталасыз."
+
+#: .\templates\registration\signup.html:11
+#, fuzzy
+#| msgid "Расшифровать"
+msgid "Зарегистрироваться"
+msgstr "Шифрлау"
+
+#: .\templates\registration\signup.html:14
+msgid "Уже есть аккаунт?"
+msgstr "Тіркелгіңіз бар ма?"
+
+#~ msgid "Перетащите изображение сюда<br>или нажмите, чтобы выбрать"
+#~ msgstr "Суретті мұнда жылжытыңыз<br>немесе таңдау үшін басыңыз"

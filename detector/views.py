@@ -1,17 +1,18 @@
 import mimetypes
 import os
+import tempfile
 from re import findall
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.http import HttpResponse
 from django.shortcuts import render
 from PIL import Image, ImageDraw
 from random import randint
-from django.core.files.storage import FileSystemStorage
 
 from djangoProject import settings
-from .stenography import hide_image, reveal_image
+from .stenography import hide_image, extract_hidden_image
 
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
@@ -116,66 +117,86 @@ def contact(request):
 def profile(request):
     return render(request, 'profile.html')
 
+@login_required(login_url="login")
+def home(request):
+    return render(request, 'home.html')
+
+@login_required(login_url="login")
+def encrypt_image(request):
+    if request.method == 'POST':
+        # Получаем изображение и текст из формы
+        image_to_hide_path = request.FILES['image_to_hide']
+        cover_image_path = request.FILES['cover_image']
+
+        # Сохраняем загруженные файлы
+        with open('media/image_to_hide.png', 'wb+') as destination:
+            for chunk in image_to_hide_path.chunks():
+                destination.write(chunk)
+
+        with open('media/cover_image.png', 'wb+') as destination:
+            for chunk in cover_image_path.chunks():
+                destination.write(chunk)
+
+        # Вызываем функцию hide_image
+        hide_image('media/cover_image.png', 'media/image_to_hide.png', 'media/image_with_secret.png')
+
+        # Формируем ссылки для скачивания файлов
+        image_url = os.path.join('/media/', 'image_with_secret.png')
+
+        # Определяем MIME-типы файлов
+        image_mime_type, _ = mimetypes.guess_type(image_url)
+
+        # Возвращаем ссылки на скачивание файлов с указанием MIME-типов
+        return render(request, 'encrypt_result.html', {
+            'image_url': image_url,
+            'image_mime_type': image_mime_type,
+        })
+    else:
+        # Возвращаем ошибку, если форма не была отправлена или данные некорректны
+        return render(request, 'encrypt_image.html')
+
+
+def decrypt_image(request):
+    image_url = None
+    if request.method == 'POST' and request.FILES.get('hidden_image'):
+        # Получаем загруженное скрытое изображение
+        hidden_image = request.FILES['hidden_image']
+
+        # Сохраняем загруженный файл
+        with open('media/hidden_image.png', 'wb+') as destination:
+            for chunk in hidden_image.chunks():
+                destination.write(chunk)
+
+        # Вызываем функцию extract_hidden_image
+        extract_hidden_image('media/hidden_image.png', 'media/extracted_image.png')
+
+        # Формируем ссылку для скачивания файла
+        image_url = os.path.join('/media/', 'extracted_image.png')
+
+        # Определяем MIME-тип файла
+        image_mime_type, _ = mimetypes.guess_type(image_url)
+
+        # Отправляем раскрывшееся изображение пользователю
+        return render(request, 'decrypt_image.html', {
+            'decrypted_image': image_url,
+            'image_mime_type': image_mime_type
+        })
+
+    return render(request, 'decrypt_image.html', {'decrypted_image': image_url})
+
 
 class SignUp(CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy('login') # После успешной регистрации перенаправить на страницу входа
+    success_url = reverse_lazy('home')
     template_name = 'registration/signup.html'
 
 
 class CustomLoginView(LoginView):
-    success_url = reverse_lazy('encrypt_text')
-    next_page = reverse_lazy('encrypt_text')
+    success_url = reverse_lazy('home')
+    next_page = reverse_lazy('home')
     template_name = 'registration/login.html'
 
 
 class CustomLogoutView(LogoutView):
-    success_url = reverse_lazy('encrypt_text')
+    success_url = reverse_lazy('home')
     template_name = 'registration/logout.html'
-
-
-def encrypt_image(request):
-    if request.method == 'POST' and request.FILES['image_to_hide'] and request.FILES['cover_image']:
-        # Получаем загруженные файлы
-        image_to_hide = request.FILES['image_to_hide']
-        cover_image = request.FILES['cover_image']
-
-        # Сохраняем файлы на сервере
-        fs = FileSystemStorage()
-        image_to_hide_path = fs.save(image_to_hide.name, image_to_hide)
-        cover_image_path = fs.save(cover_image.name, cover_image)
-
-        # Путь для сохранения скрытого изображения
-        output_path = settings.MEDIA_ROOT + '/hidden_image.jpg'
-
-        # Скрыть изображение
-        hide_image(settings.MEDIA_ROOT + '/' + image_to_hide_path,
-                   settings.MEDIA_ROOT + '/' + cover_image_path,
-                   output_path)
-
-        # Отправляем скрытое изображение пользователю
-        return render(request, 'encrypt_result.html', {'encrypted_image': output_path})
-
-    return render(request, 'encrypt_image.html')
-
-def decrypt_image(request):
-    decrypted_image = None
-
-    if request.method == 'POST' and request.FILES['hidden_image']:
-        # Получаем загруженное скрытое изображение
-        hidden_image = request.FILES['hidden_image']
-
-        # Сохраняем файл на сервере
-        fs = FileSystemStorage()
-        hidden_image_path = fs.save(hidden_image.name, hidden_image)
-
-        # Путь для сохранения расшифрованного изображения
-        output_path = settings.MEDIA_ROOT + '/revealed_image.jpg'
-
-        # Раскрыть скрытое изображение
-        reveal_image(settings.MEDIA_ROOT + '/' + hidden_image_path, output_path)
-
-        # Отправляем раскрытое изображение пользователю
-        decrypted_image = output_path
-
-    return render(request, 'decrypt_image.html', {'decrypted_image': decrypted_image})

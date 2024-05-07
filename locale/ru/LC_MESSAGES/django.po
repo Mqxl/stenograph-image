@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-03 18:17+0500\n"
+"POT-Creation-Date: 2024-05-05 16:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,49 +16,286 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: .\templates\base.html:11 .\templates\base.html:19
-msgid "Steno"
-msgstr ""
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\templates\base.html:36
-msgid "Главная"
-msgstr ""
-
-#: .\templates\base.html:44
-msgid "Профиль"
-msgstr ""
-
-#: .\templates\base.html:52
-msgid "Расшифровать"
-msgstr ""
-
-#: .\templates\base.html:60
+#: .\templates\about.html:7 .\templates\base.html:82
 msgid "О нас"
 msgstr ""
 
-#: .\templates\base.html:68
+#: .\templates\about.html:11
+msgid ""
+"Привет! Я студент, увлеченный разработкой веб-приложений. Этот сайт - мой "
+"проект, где я стремлюсь создать высококачественное веб-приложение для "
+"стенографии."
+msgstr ""
+
+#: .\templates\about.html:14
+msgid ""
+"Моя страсть к программированию и технологиям вдохновила меня на создание "
+"этого сайта. Я учусь и исследую новые подходы к разработке, чтобы предложить "
+"пользователям инновационное и удобное приложение для записи и перевода речи."
+msgstr ""
+
+#: .\templates\about.html:17
+msgid ""
+"Хотя я работаю в одиночку, я стремлюсь к профессионализму и качеству, "
+"которые обычно свойственны команде. Я уделяю внимание каждой детали, чтобы "
+"обеспечить удобство использования и эффективность приложения."
+msgstr ""
+
+#: .\templates\about.html:20
+msgid ""
+"Моя цель - упростить процесс стенографии для студентов, профессионалов и "
+"всех, кто в ней нуждается. Я стремлюсь создать приложение, которое поможет "
+"им работать быстрее и эффективнее."
+msgstr ""
+
+#: .\templates\about.html:23
+msgid ""
+"Присоединяйтесь ко мне в этом увлекательном путешествии! Я уверен, что с "
+"моим приложением ваша работа с текстом станет более удобной и продуктивной."
+msgstr ""
+
+#: .\templates\base.html:9 .\templates\base.html:17
+msgid "Steno"
+msgstr ""
+
+#: .\templates\base.html:34
+msgid "Главная"
+msgstr ""
+
+#: .\templates\base.html:42
+msgid "Профиль"
+msgstr ""
+
+#: .\templates\base.html:50
+msgid "Шифрование текста в изображения"
+msgstr ""
+
+#: .\templates\base.html:58
+msgid "Расшифровка текста из изображения"
+msgstr ""
+
+#: .\templates\base.html:66
+msgid "Скрытые изображения"
+msgstr ""
+
+#: .\templates\base.html:74
+msgid "Извлечение скрытых изображений"
+msgstr ""
+
+#: .\templates\base.html:90 .\templates\contact.html:7
 msgid "Контакты"
 msgstr ""
 
-#: .\templates\base.html:79
+#: .\templates\base.html:101
 msgid "Выйти"
 msgstr ""
 
-#: .\templates\base.html:88
+#: .\templates\base.html:110
 msgid "Войти"
 msgstr ""
 
-#: .\templates\base.html:96
+#: .\templates\base.html:118
 msgid "Регистрация"
 msgstr ""
 
-#: .\templates\base.html:112
+#: .\templates\base.html:153
 msgid "2024 Все права защищены"
 msgstr ""
 
-#: .\templates\base.html:118
+#: .\templates\base.html:159
 msgid "Вы уверены, что хотите выйти?"
+msgstr ""
+
+#: .\templates\contact.html:10
+msgid "Адрес:"
+msgstr ""
+
+#: .\templates\contact.html:11
+msgid "Телефон:"
+msgstr ""
+
+#: .\templates\contact.html:12
+msgid "Email:"
+msgstr ""
+
+#: .\templates\decrypt.html:6
+msgid "Загрузите изображение и ключ для расшифровки"
+msgstr ""
+
+#: .\templates\decrypt.html:15 .\templates\index.html:15
+msgid "Перетащите изображение сюда"
+msgstr ""
+
+#: .\templates\decrypt.html:15 .\templates\decrypt.html:26
+#: .\templates\decrypt_image.html:15 .\templates\encrypt_image.html:15
+#: .\templates\encrypt_image.html:26 .\templates\index.html:15
+msgid "или нажмите, чтобы выбрать"
+msgstr ""
+
+#: .\templates\decrypt.html:26
+msgid "Перетащите текстовый файл сюда"
+msgstr ""
+
+#: .\templates\decrypt.html:31 .\templates\decrypt_image.html:20
+msgid "Расшифровать"
+msgstr ""
+
+#: .\templates\decrypt.html:35
+msgid "Расшифрованный текст:"
+msgstr ""
+
+#: .\templates\decrypt_image.html:6
+msgid "Загрузите скрытое изображение для расшифровки"
+msgstr ""
+
+#: .\templates\decrypt_image.html:15
+msgid "Перетащите скрытое изображение сюда"
+msgstr ""
+
+#: .\templates\decrypt_image.html:24
+msgid "Расшифрованное изображение:"
+msgstr ""
+
+#: .\templates\decrypt_image.html:25
+msgid "Расшифрованное изображение"
+msgstr ""
+
+#: .\templates\encrypt_image.html:6
+msgid "Загрузите изображение, которое нужно скрыть, и обложку"
+msgstr ""
+
+#: .\templates\encrypt_image.html:15
+msgid "Перетащите изображение, которое нужно скрыть, сюда"
+msgstr ""
+
+#: .\templates\encrypt_image.html:26
+msgid "Перетащите обложку сюда"
+msgstr ""
+
+#: .\templates\encrypt_image.html:31 .\templates\index.html:24
+#: .\templates\profile.html:24
+msgid "Зашифровать"
+msgstr ""
+
+#: .\templates\encrypt_image.html:35
+msgid "Зашифрованное изображение:"
+msgstr ""
+
+#: .\templates\encrypt_image.html:36 .\templates\encrypt_result.html:45
+#: .\templates\encrypt_result.html:46
+msgid "Зашифрованное изображение"
+msgstr ""
+
+#: .\templates\encrypt_result.html:47
+msgid "Скачать"
+msgstr ""
+
+#: .\templates\encrypted_success.html:7
+msgid "Зашифрование завершено!"
+msgstr ""
+
+#: .\templates\encrypted_success.html:9
+msgid "Скачать зашифрованное изображение"
+msgstr ""
+
+#: .\templates\encrypted_success.html:10
+msgid "Скачать файл с ключами"
+msgstr ""
+
+#: .\templates\home.html:14
+msgid "Шифрование и дешифрование текста:"
+msgstr ""
+
+#: .\templates\home.html:15
+msgid ""
+"Шифрование текста - это процесс преобразования обычного текста в непонятный "
+"код, который может быть прочитан только с помощью правильного ключа или "
+"алгоритма. Дешифрование - обратный процесс, при котором зашифрованный текст "
+"преобразуется обратно в исходный."
+msgstr ""
+
+#: .\templates\home.html:19
+msgid "Скрытие фото в других изображениях:"
+msgstr ""
+
+#: .\templates\home.html:20
+msgid ""
+"Эта функция позволяет вам скрыть одно изображение внутри другого, делая его "
+"незаметным для обычного взгляда. Это может быть использовано для "
+"стеганографии - способа передачи информации, при котором сокрытые данные не "
+"вызывают подозрений."
+msgstr ""
+
+#: .\templates\home.html:25
+msgid "Пример использования:"
+msgstr ""
+
+#: .\templates\home.html:27
+msgid "Шифрование текста:"
+msgstr ""
+
+#: .\templates\home.html:29
+msgid "Введите текст, который вы хотите зашифровать."
+msgstr ""
+
+#: .\templates\home.html:30
+msgid "Выберите ключ или метод шифрования."
+msgstr ""
+
+#: .\templates\home.html:31
+msgid "Получите зашифрованный текст."
+msgstr ""
+
+#: .\templates\home.html:36
+msgid "Дешифрование текста:"
+msgstr ""
+
+#: .\templates\home.html:38
+msgid "Введите зашифрованный текст."
+msgstr ""
+
+#: .\templates\home.html:39
+msgid "Введите ключ или метод, использованный для шифрования."
+msgstr ""
+
+#: .\templates\home.html:40
+msgid "Получите исходный текст."
+msgstr ""
+
+#: .\templates\home.html:45
+msgid "Скрытие фото в другом изображении:"
+msgstr ""
+
+#: .\templates\home.html:47
+msgid "Выберите изображение, которое вы хотите скрыть."
+msgstr ""
+
+#: .\templates\home.html:48
+msgid "Выберите изображение, в которое вы хотите его скрыть."
+msgstr ""
+
+#: .\templates\home.html:49
+msgid ""
+"Получите новое изображение, в котором первое изображение скрыто внутри "
+"второго."
+msgstr ""
+
+#: .\templates\index.html:6 .\templates\profile.html:6
+msgid "Зашифровать текст в изображение"
+msgstr ""
+
+#: .\templates\index.html:21 .\templates\profile.html:21
+msgid "Текст для шифрования"
+msgstr ""
+
+#: .\templates\index.html:22 .\templates\profile.html:22
+msgid "Введите текст для шифрования"
+msgstr ""
+
+#: .\templates\profile.html:15
+msgid "Перетащите изображение сюда<br>или нажмите, чтобы выбрать"
 msgstr ""

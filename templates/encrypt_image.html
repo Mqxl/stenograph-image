@@ -1,39 +1,40 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-    <div class="encrypt-form-container">
-        <h2>Загрузите изображение, которое нужно скрыть, и обложку</h2>
-        <form action="{% url 'encrypt-image' %}" method="POST" enctype="multipart/form-data" class="encrypt-form" id="encrypt-form">
-            {% csrf_token %}
-            <div class="upload-container" id="image-to-hide-drop-area">
-                <label for="image-to-hide-upload">
-                    <div class="drop-message">
-                        <div class="upload-icon">
-                            <i class="fa fa-file"></i>
-                        </div>
-                        <p>Перетащите изображение, которое нужно скрыть, сюда<br>или нажмите, чтобы выбрать</p>
+<div class="encrypt-form-container">
+    <h2>{% trans "Загрузите изображение, которое нужно скрыть, и обложку" %}</h2>
+    <form action="{% url 'encrypt-image' %}" method="POST" enctype="multipart/form-data" class="encrypt-form" id="encrypt-form">
+        {% csrf_token %}
+        <div class="upload-container" id="image-to-hide-drop-area">
+            <label for="image-to-hide-upload">
+                <div class="drop-message">
+                    <div class="upload-icon">
+                        <i class="fa fa-file"></i>
                     </div>
-                </label>
-                <input type="file" name="image_to_hide" id="image-to-hide-upload" accept="image/*" required>
-            </div>
-            <div class="upload-container" id="cover-image-drop-area">
-                <label for="cover-image-upload">
-                    <div class="drop-message">
-                        <div class="upload-icon">
-                            <i class="fa fa-file"></i>
-                        </div>
-                        <p>Перетащите обложку сюда<br>или нажмите, чтобы выбрать</p>
+                    <p>{% trans "Перетащите изображение, которое нужно скрыть, сюда" %}<br>{% trans "или нажмите, чтобы выбрать" %}</p>
+                </div>
+            </label>
+            <input type="file" name="image_to_hide" id="image-to-hide-upload" accept="image/*" required>
+        </div>
+        <div class="upload-container" id="cover-image-drop-area">
+            <label for="cover-image-upload">
+                <div class="drop-message">
+                    <div class="upload-icon">
+                        <i class="fa fa-file"></i>
                     </div>
-                </label>
-                <input type="file" name="cover_image" id="cover-image-upload" accept="image/*" required>
-            </div>
-            <button type="submit" class="button">Зашифровать</button>
-        </form>
-        {% if encrypted_image %}
-            <div class="encrypted-image">
-                <h3>Зашифрованное изображение:</h3>
-                <img src="{{ encrypted_image }}" alt="Зашифрованное изображение">
-            </div>
-        {% endif %}
+                    <p>{% trans "Перетащите обложку сюда" %}<br>{% trans "или нажмите, чтобы выбрать" %}</p>
+                </div>
+            </label>
+            <input type="file" name="cover_image" id="cover-image-upload" accept="image/*" required>
+        </div>
+        <button type="submit" class="button">{% trans "Зашифровать" %}</button>
+    </form>
+    {% if encrypted_image %}
+    <div class="encrypted-image">
+        <h3>{% trans "Зашифрованное изображение:" %}</h3>
+        <img src="{{ encrypted_image }}" alt="{% trans "Зашифрованное изображение" %}">
     </div>
+    {% endif %}
+</div>
 {% endblock %}

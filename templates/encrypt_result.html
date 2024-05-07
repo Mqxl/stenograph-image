@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<style>
+.encrypted-image-container {
+    width: 1400px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-frame {
+    border: 2px solid #ddd; /* рамка изображения */
+    padding: 10px; /* отступ вокруг изображения */
+    max-width: 600px; /* максимальная ширина контейнера с изображением */
+}
+
+.image-frame img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px; /* отступ между изображением и кнопкой */
+}
+</style>
+<div class="encrypted-image-container">
+    <h2>{% trans "Зашифрованное изображение" %}</h2>
+    <img src="{{ image_url }}" alt="{% trans "Зашифрованное изображение" %}" class="image-frame">
+    <a href="{{ image_url }}" download="encrypted_image.jpg" class="button">{% trans "Скачать" %}</a>
+</div>
+{% endblock %}
